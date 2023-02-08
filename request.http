@@ -1,0 +1,25 @@
+### Get reports
+GET http://localhost:3000/reports
+
+### Get report by id
+GET http://localhost:3000/reports/1000 
+
+### Create Report
+POST http://localhost:3000/reports
+Content-Type: application/json
+
+{
+  "content": "report"
+}
+
+### Approve report
+PATCH http://localhost:3000/reports/1000
+
+### SingUp
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "email": "juan@gmail.com",
+  "password": "1234"
+}
