@@ -1,0 +1,17 @@
+### Get user by id
+GET http://localhost:3000/users/4
+
+### Get users by email
+GET http://localhost:3000/users?email=juandiego@gmail.com
+
+### Delete user
+DELETE http://localhost:3000/users/5
+
+### Update user
+PATCH http://localhost:3000/users/4
+Content-Type: application/json
+
+{
+  "email": "juandiego@gmail.com",
+  "password": "123456"
+}

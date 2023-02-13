@@ -14,12 +14,3 @@ Content-Type: application/json
 
 ### Approve report
 PATCH http://localhost:3000/reports/1000
-
-### SingUp
-POST http://localhost:3000/auth/signup
-Content-Type: application/json
-
-{
-  "email": "juan@gmail.com",
-  "password": "1234"
-}

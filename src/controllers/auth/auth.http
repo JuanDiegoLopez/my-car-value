@@ -1,0 +1,23 @@
+### Register new user
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+  "email": "juan@gmail.com",
+  "password": "12345"
+}
+
+### signin a user
+POST http://localhost:3000/auth/signin
+Content-Type: application/json
+
+{
+  "email": "juandiego@gmail.com",
+  "password": "1234"
+}
+
+### signout a user
+POST http://localhost:3000/auth/signout
+
+###
+GET http://localhost:3000/auth/whoami
