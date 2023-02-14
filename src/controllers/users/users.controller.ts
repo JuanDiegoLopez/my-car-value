@@ -8,9 +8,9 @@ import {
   Patch,
   Query,
 } from '@nestjs/common';
-import { Serialize } from 'src/decorators/serialize.decorator';
-import { UpdateUserDto } from 'src/dtos/update-user.dto';
-import { UserDto } from 'src/dtos/user.dto';
+import { Serialize } from '../../decorators/serialize.decorator';
+import { UpdateUserDto } from '../../dtos/update-user.dto';
+import { UserDto } from '../../dtos/user.dto';
 import { UsersService } from '../../services/users.service';
 
 @Controller('users')
