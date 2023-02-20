@@ -1,8 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateReportDto } from 'src/dtos/create-report.dto';
-import { Report } from 'src/models/report.entity';
-import { User } from 'src/models/user.entity';
+import { CreateReportDto } from '../dtos/create-report.dto';
+import { GetEstimateDto } from '../dtos/get-estimate.dto';
+import { Report } from '../models/report.entity';
+import { User } from '../models/user.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -20,8 +21,22 @@ export class ReportsService {
     return this.repo.findOneBy({ id });
   }
 
-  find() {
-    return this.repo.find();
+  createEstimate(estimateDto: GetEstimateDto) {
+    const { make, model, lat, lng, year, mileage } = estimateDto;
+
+    return this.repo
+      .createQueryBuilder()
+      .select('AVG(price)', 'price')
+      .where('make = :make', { make })
+      .andWhere('model = :model', { model })
+      .andWhere('lng - :lng BETWEEN -5 AND 5', { lng })
+      .andWhere('lat - :lat BETWEEN -5 AND 5', { lat })
+      .andWhere('year - :year BETWEEN -3 AND 3', { year })
+      .andWhere('approved = true')
+      .orderBy('ABS(mileage - :mileage)', 'DESC')
+      .setParameter('mileage', mileage)
+      .limit(3)
+      .getRawOne();
   }
 
   async update(id: number, updates: Partial<Report>) {
