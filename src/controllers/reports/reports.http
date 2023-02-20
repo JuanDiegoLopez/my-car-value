@@ -9,8 +9,22 @@ POST http://localhost:3000/reports
 Content-Type: application/json
 
 {
-  "content": "report"
+  "make": "toyota",
+  "model": "corolla",
+  "year": 1980,
+  "mileage": 100000,
+  "lat": 0,
+  "lng": 0,
+  "price": 500000
 }
 
 ### Approve report
-PATCH http://localhost:3000/reports/1000
+PATCH http://localhost:3000/reports/2
+Content-Type: application/json
+
+{
+  "approved": true
+}
+
+### Get an estimate for an existing car
+GET http://localhost:3000/reports?make=toyota&model=corolla&year=1980&mileage=10000&lat=0&lng=0
