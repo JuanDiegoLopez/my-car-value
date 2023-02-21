@@ -23,6 +23,15 @@ function getDataSourceOptions() {
       });
       break;
     case 'production':
+      Object.assign(options, {
+        type: 'postgres',
+        database: process.env.DATABASE_URL,
+        entities: ['**/*.entity.js'],
+        migrationsRun: true,
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      });
       break;
     default:
       throw new Error('Unknown environment');
